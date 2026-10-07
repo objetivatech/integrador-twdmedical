@@ -1,0 +1,7 @@
+# Trecho a ser mesclado no supabase/config.toml do projeto da plataforma.
+# As funções do integrador autenticam pelo token do equipamento (não por JWT de usuário).
+[functions.integrador-exames]
+verify_jwt = false
+
+[functions.integrador-status]
+verify_jwt = false

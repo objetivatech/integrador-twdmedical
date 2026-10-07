@@ -1,0 +1,35 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  testes:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          global-json-file: global.json
+      - run: dotnet build TwdIntegrador.sln -c Release
+      - run: dotnet test tests/TwdIntegrador.Core.Tests -c Release --no-build
+
+  windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          global-json-file: global.json
+      - run: dotnet test tests/TwdIntegrador.Core.Tests -c Release
+      - run: dotnet publish src/TwdIntegrador.App -c Release -o publish
+      - uses: actions/upload-artifact@v4
+        with:
+          name: TwdIntegrador-win-x64
+          path: publish/
+          retention-days: 14

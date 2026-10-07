@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <RootNamespace>TwdIntegrador.Core</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="PdfPig" Version="0.1.16" />
+    <PackageReference Include="Microsoft.Data.Sqlite" Version="10.0.10" />
+    <!-- Força versão corrigida da SQLite nativa (GHSA-2m69-gcr7-jv3q). -->
+    <PackageReference Include="SQLitePCLRaw.lib.e_sqlite3" Version="2.1.13" />
+    <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="10.0.10" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="10.0.10" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="TwdIntegrador.Core.Tests" />
+  </ItemGroup>
+
+</Project>
